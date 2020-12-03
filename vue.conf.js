@@ -22,7 +22,7 @@ module.exports = {
         args[0].js = cdnConfig.js;
         return args;
       });
-      config.externals({...cdnConfig.nameConfig});
+      config.externals(cdnConfig.nameConfig);
       config.plugin("html").tap(args => {
         args[0].minify = false;
         return args;
