@@ -1,5 +1,7 @@
 // 引入CDN配置信息
 import cdnConfig from "./cdnConfig";
+// 引入后端服务器及接口前缀配置
+const { urlConfig } = require("./urlConfig");
 
 module.exports = {
   // 打包后的文件夹名称
@@ -7,10 +9,9 @@ module.exports = {
   // API请求转发设置
   devServer: {
     proxy: {
-      "/api": {
-        target: "https://blog.xmxui.com/api",
-        changeOrigin: true,
-        pathRewrite: {"^/api": ""}
+      [urlConfig.base]: {
+        target: urlConfig.target,
+        changeOrigin: true
       }
     },
   },
